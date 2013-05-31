@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+
+<project name="parse-keyword" default="jar-core">
+
+	<import file="../build-plugin.xml" />
+
+</project>

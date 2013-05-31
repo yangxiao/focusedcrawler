@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin
+   id="parse-keyword"
+   name="Keyword Html Parse Filter"
+   version="1.0"
+   provider-name="jinxin">
+
+   <runtime>
+      <library name="parse-keyword.jar">
+         <export name="*"/>
+      </library>
+   </runtime>
+
+   <extension id="org.apache.nutch.parse.keyword.parser"
+              name="Keyword Html Parse Filter"
+              point="org.apache.nutch.parse.HtmlParseFilter">
+      <implementation id="KeywordFilter"
+                      class="org.apache.nutch.parse.keyword.KeywordFilter"/>
+   </extension>
+
+</plugin>
+

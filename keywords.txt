@@ -1,0 +1,28 @@
+[threshold]
+2
+
+[keyword list]
+hadoop
+big data
+mapreduce
+hdfs
+hbase
+hive
+zookeeper
+pig
+nutch
+solr
+lucene
+cluster
+apache
+distributed system
+nosql
+namenode
+datanode
+open source
+java
+cloud computing
+cloud platform
+distribution
+cloudera
+cloudera

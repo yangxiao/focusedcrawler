@@ -1,0 +1,28 @@
+how to configure and run nutch?
+
+
+1. Go to http://nutch.apache.org/ to download apache-nutch-1.6-src.tar.gz and then unzip. Go to http://lucene.apache.org/solr/ to download apache-solr-3.6.2.zip and then unzip.
+
+2. Copy directory parse-keyword and build.xml to apache-nutch-1.6/src/plugin/. Then use ant to compile the nucth project(cd apache-nutch-1.6/ and then ant).
+
+3. Copy schema.xml to apache-solr-3.6.2/example/solr/conf. Change directory to apache-solr-3.6.2/example and use command "java -jar start.jar" to start solr server locally. You can open http://localhost:8983/solr/admin to test whether the solr server is ready in use.
+4. Copy directory urls to apache-nutch-1.6/runtime/local/ , add crawl seeds in any files in  directory urls. 
+
+5. Copy regex-urlfilter.txt to apache-nutch-1.6/runtime/local/conf/ and modify your accepted websites. Use + to add accepted websites, use - to add filtered websites. If you want to accept all websites, just use +.
+
+6. Copy  keywords.txt to apache-nutch-1.6/runtime/local/conf/ and add keywords list. In section threshold, if threshold is N, websites which contain at least N keywords will be indexed and its outlinks will be crawled further.In section keyword list, you can add your own keywords used in filtering websites.
+7. Copy nutch-site.xml to apache-nutch-1.6/runtime/local/conf/.  If you don't want to use plugin parse-keyword, you can open nutch-site.xml and remove the second property.
+
+8. Copy the shell crawl to apache-nutch-1.6/runtime/local/bin/. Use the shell to run nutch, it needs 5 parameters:
+   
+	seedDir: the seeds directory, namely runtime/local/urls(of course, you can have your own seeds directory)
+  . 
+	crawlDir: the directory to store crawled data
+ .  
+	solrURL: the url of solr server.That is http://localhost:8983/solr/
+(If you have your own solr server, use your own solr address).
+	numberOfRounds: define how many rounds to crawl. If this parameter equals 0, crawler will run forever. 
+   
+	numberOfPagesPerRound:define that in each round, the maxinum websites to crawl.
+
+9.You can use solr admin page to search websites crawled and indexed(http://localhost:8983/solr/admin). If you want to delete crawled data ,just delete crawl directory. If you want to delete index on the solr server,you can change to apache-solr-3.6.2/example/exampledocs and use command "java -Ddata=args -jar post.jar "<delete><query>*:*</query></delete>"".
